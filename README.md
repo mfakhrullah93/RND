@@ -29,10 +29,10 @@
 10. **Audit Service**: Provide tools for internal and external auditing, ensuring compliance with financial standards.
 
 ### Proto Generate Example:-
-`protoc --proto_path=. --go_out=. --go_opt=paths=source_relative protos/accounting-service.proto`
-`protoc --proto_path=. --go-grpc_out=. protos/accounting-service.proto`
+> [^1]: protoc --proto_path=. --go_out=. --go_opt=paths=source_relative protos/accounting-service.proto
+> [^2]: protoc --proto_path=. --go-grpc_out=. protos/accounting-service.proto`
 
 ### grpcurl command:-
-**List all method of the service** `grpcurl --plaintext localhost:1993 list`
-**Describe method** `grpcurl --plaintext localhost:1993 describe accounting.AccountingService.ListLedgerEntries`
-**Test calling method with parameter** `grpcurl --plaintext -d '{"start_date":"02022024","end_date":"03032024"}' localhost:1993 accounting.AccountingService/ListLedgerEntries`
+> [^1]: **List all method of the service** `grpcurl --plaintext localhost:1993 list`
+> [^2]: **Describe method** `grpcurl --plaintext localhost:1993 describe accounting.AccountingService.ListLedgerEntries`
+> [^3]: **Test calling method with parameter** `grpcurl --plaintext -d '{"start_date":"02022024","end_date":"03032024"}' localhost:1993 accounting.AccountingService/ListLedgerEntries`
