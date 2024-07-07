@@ -33,9 +33,9 @@
 
 > `protoc --proto_path=. --go-grpc_out=. protos/accounting-service.proto`
 
-### grpcurl command:-
-> **List all method of the service** `grpcurl --plaintext localhost:1993 list`
+### grpcurl Command:-
+> **List all method of the service**: `grpcurl --plaintext localhost:1993 list`
 
-> **Describe method** `grpcurl --plaintext localhost:1993 describe accounting.AccountingService.ListLedgerEntries`
+> **Describe method**: `grpcurl --plaintext localhost:1993 describe accounting.AccountingService.ListLedgerEntries`
 
-> **Test calling method with parameter** `grpcurl --plaintext -d '{"start_date":"02022024","end_date":"03032024"}' localhost:1993 accounting.AccountingService/ListLedgerEntries`
+> **Test calling method with parameter**: `grpcurl --plaintext -d '{"start_date":"02022024","end_date":"03032024"}' localhost:1993 accounting.AccountingService/ListLedgerEntries`
