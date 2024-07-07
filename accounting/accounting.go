@@ -18,12 +18,11 @@ func (acc *AccountServer) CreateLedgerEntry(ctx context.Context, cle*protos.Crea
 	fmt.Println("[CreateLedgerEntry]", cle)
 
 	listLen := len(listLedger)
-	newId := fmt.Sprintf("%v", listLen + 1)
+	new_id := fmt.Sprintf("%v", listLen + 1)
 
-	// Append a new element
-	newEntry := &protos.GetLedgerEntryResponse{
-		Id:          newId,
-		Type: 			 cle.Type,
+	newEntry := &protos.Ledger{
+		Id:          new_id,
+		TypeId: 		 cle.TypeId,
 		Description: cle.Description,
 		Amount:      cle.Amount,
 		Date:        cle.Date,
@@ -31,12 +30,21 @@ func (acc *AccountServer) CreateLedgerEntry(ctx context.Context, cle*protos.Crea
 	
 	listLedger = append(listLedger, newEntry)
 
-	return &protos.CreateLedgerEntryResponse{Id: newId}, nil
+	return &protos.CreateLedgerEntryResponse{Id: new_id}, nil
 }
 
 func (acc *AccountServer) GetLedgerEntry(ctx context.Context, gle*protos.GetLedgerEntryRequest) (*protos.GetLedgerEntryResponse, error) {
 	fmt.Println("[GetLedgerEntry]", gle)
-	return &protos.GetLedgerEntryResponse{Id: gle.Id, Type: "1", Description: "Tools", Amount: 1032.20, Date: "02022024"}, nil
+
+	newEntry := &protos.Ledger{
+		Id:          gle.Id,
+		TypeId: 		 "2",
+		Description: "Tools",
+		Amount:      1032.20,
+		Date:        "02022024",
+	}
+
+	return &protos.GetLedgerEntryResponse{Ledger: newEntry}, nil
 }
 
 func (acc *AccountServer) ListLedgerEntries(ctx context.Context, lle*protos.ListLedgerEntriesRequest) (*protos.ListLedgerEntriesResponse, error) {
@@ -44,7 +52,7 @@ func (acc *AccountServer) ListLedgerEntries(ctx context.Context, lle*protos.List
 	return &protos.ListLedgerEntriesResponse{Entries: listLedger}, nil
 }
 
-var listLedger = []*protos.GetLedgerEntryResponse{
+var listLedger = []*protos.Ledger{
 	{
 		Id:          "1",
 		Description: "Salary Payment",

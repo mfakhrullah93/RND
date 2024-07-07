@@ -9,7 +9,7 @@ service AccountingService {
 }
 
 message CreateLedgerEntryRequest {
-  string type = 1;
+  string type_id = 1;
   string description = 2;
   double amount = 3;
   string date = 4;
@@ -24,11 +24,7 @@ message GetLedgerEntryRequest {
 }
 
 message GetLedgerEntryResponse {
-  string id = 1;
-  string type = 2;
-  string description = 3;
-  double amount = 4;
-  string date = 5;
+  Ledger ledger = 1;
 }
 
 message ListLedgerEntriesRequest {
@@ -37,5 +33,13 @@ message ListLedgerEntriesRequest {
 }
 
 message ListLedgerEntriesResponse {
-  repeated GetLedgerEntryResponse entries = 1;
+  repeated Ledger entries = 1;
+}
+
+message Ledger {
+  string id = 1;
+  string type_id = 2;
+  string description = 3;
+  double amount = 4;
+  string date = 5;
 }

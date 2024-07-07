@@ -1,0 +1,93 @@
+syntax = "proto3";
+
+package accounting;
+
+// Define the InvoicingService
+service InvoicingService {
+  rpc CreateInvoice(CreateInvoiceRequest) returns (CreateInvoiceResponse);
+  rpc SendInvoice(SendInvoiceRequest) returns (SendInvoiceResponse);
+  rpc GetInvoice(GetInvoiceRequest) returns (GetInvoiceResponse);
+  rpc ListInvoices(ListInvoicesRequest) returns (ListInvoicesResponse);
+  rpc ReceivePayment(ReceivePaymentRequest) returns (ReceivePaymentResponse);
+}
+
+// Request and Response messages
+message CreateInvoiceRequest {
+  string invoice_number = 1;
+  string supplier_id = 2;
+  string customer_id = 3;
+  repeated InvoiceItem items = 4;
+  string invoice_date = 5;
+  string due_date = 6;
+  double total_amount = 7;
+  double tax_amount = 8;
+  double grand_total = 9;
+  string currency = 10;
+  PaymentTerms payment_terms = 11;
+}
+
+message CreateInvoiceResponse {
+  string invoice_id = 1;
+}
+
+message SendInvoiceRequest {
+  string invoice_id = 1;
+  string email = 2;
+}
+
+message SendInvoiceResponse {}
+
+message GetInvoiceRequest {
+  string invoice_id = 1;
+}
+
+message GetInvoiceResponse {
+  Invoice invoice = 1;
+}
+
+message ListInvoicesRequest {
+  string customer_id = 1;
+}
+
+message ListInvoicesResponse {
+  repeated Invoice invoices = 1;
+}
+
+message ReceivePaymentRequest {
+  string invoice_id = 1;
+  double amount = 2;
+}
+
+message ReceivePaymentResponse {}
+
+// Invoice and InvoiceItem messages
+message Invoice {
+  string invoice_id = 1;
+  string invoice_number = 2;
+  string supplier_id = 3;
+  string customer_id = 4;
+  repeated InvoiceItem items = 5;
+  string invoice_date = 6;
+  string due_date = 7;
+  double total_amount = 8;
+  double tax_amount = 9;
+  double grand_total = 10;
+  string currency = 11;
+  PaymentTerms payment_terms = 12;
+  string status = 13;
+}
+
+message InvoiceItem {
+  string item_code = 1;
+  string description = 2;
+  int32 quantity = 3;
+  double unit_price = 4;
+  double total_price = 5;
+  double tax_rate = 6;
+  double tax_amount = 7;
+}
+
+message PaymentTerms {
+  string terms = 1;
+  int32 days = 2;
+}
