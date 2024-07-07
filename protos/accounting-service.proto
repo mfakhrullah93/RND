@@ -5,6 +5,7 @@ option go_package = "./protos";
 service AccountingService {
   rpc CreateLedgerEntry (CreateLedgerEntryRequest) returns (CreateLedgerEntryResponse);
   rpc GetLedgerEntry (GetLedgerEntryRequest) returns (GetLedgerEntryResponse);
+  rpc UpdateLedgerEntry(UpdateLedgerEntryRequest) returns (UpdateLedgerEntryResponse);
   rpc ListLedgerEntries (ListLedgerEntriesRequest) returns (ListLedgerEntriesResponse);
 }
 
@@ -24,6 +25,14 @@ message GetLedgerEntryRequest {
 }
 
 message GetLedgerEntryResponse {
+  Ledger ledger = 1;
+}
+
+message UpdateLedgerEntryRequest {
+  Ledger ledger = 1;
+}
+
+message UpdateLedgerEntryResponse {
   Ledger ledger = 1;
 }
 

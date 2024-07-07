@@ -21,6 +21,7 @@ const _ = grpc.SupportPackageIsVersion8
 const (
 	AccountingService_CreateLedgerEntry_FullMethodName = "/accounting.AccountingService/CreateLedgerEntry"
 	AccountingService_GetLedgerEntry_FullMethodName    = "/accounting.AccountingService/GetLedgerEntry"
+	AccountingService_UpdateLedgerEntry_FullMethodName = "/accounting.AccountingService/UpdateLedgerEntry"
 	AccountingService_ListLedgerEntries_FullMethodName = "/accounting.AccountingService/ListLedgerEntries"
 )
 
@@ -30,6 +31,7 @@ const (
 type AccountingServiceClient interface {
 	CreateLedgerEntry(ctx context.Context, in *CreateLedgerEntryRequest, opts ...grpc.CallOption) (*CreateLedgerEntryResponse, error)
 	GetLedgerEntry(ctx context.Context, in *GetLedgerEntryRequest, opts ...grpc.CallOption) (*GetLedgerEntryResponse, error)
+	UpdateLedgerEntry(ctx context.Context, in *UpdateLedgerEntryRequest, opts ...grpc.CallOption) (*UpdateLedgerEntryResponse, error)
 	ListLedgerEntries(ctx context.Context, in *ListLedgerEntriesRequest, opts ...grpc.CallOption) (*ListLedgerEntriesResponse, error)
 }
 
@@ -61,6 +63,16 @@ func (c *accountingServiceClient) GetLedgerEntry(ctx context.Context, in *GetLed
 	return out, nil
 }
 
+func (c *accountingServiceClient) UpdateLedgerEntry(ctx context.Context, in *UpdateLedgerEntryRequest, opts ...grpc.CallOption) (*UpdateLedgerEntryResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateLedgerEntryResponse)
+	err := c.cc.Invoke(ctx, AccountingService_UpdateLedgerEntry_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *accountingServiceClient) ListLedgerEntries(ctx context.Context, in *ListLedgerEntriesRequest, opts ...grpc.CallOption) (*ListLedgerEntriesResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListLedgerEntriesResponse)
@@ -77,6 +89,7 @@ func (c *accountingServiceClient) ListLedgerEntries(ctx context.Context, in *Lis
 type AccountingServiceServer interface {
 	CreateLedgerEntry(context.Context, *CreateLedgerEntryRequest) (*CreateLedgerEntryResponse, error)
 	GetLedgerEntry(context.Context, *GetLedgerEntryRequest) (*GetLedgerEntryResponse, error)
+	UpdateLedgerEntry(context.Context, *UpdateLedgerEntryRequest) (*UpdateLedgerEntryResponse, error)
 	ListLedgerEntries(context.Context, *ListLedgerEntriesRequest) (*ListLedgerEntriesResponse, error)
 	mustEmbedUnimplementedAccountingServiceServer()
 }
@@ -90,6 +103,9 @@ func (UnimplementedAccountingServiceServer) CreateLedgerEntry(context.Context, *
 }
 func (UnimplementedAccountingServiceServer) GetLedgerEntry(context.Context, *GetLedgerEntryRequest) (*GetLedgerEntryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetLedgerEntry not implemented")
+}
+func (UnimplementedAccountingServiceServer) UpdateLedgerEntry(context.Context, *UpdateLedgerEntryRequest) (*UpdateLedgerEntryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateLedgerEntry not implemented")
 }
 func (UnimplementedAccountingServiceServer) ListLedgerEntries(context.Context, *ListLedgerEntriesRequest) (*ListLedgerEntriesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListLedgerEntries not implemented")
@@ -143,6 +159,24 @@ func _AccountingService_GetLedgerEntry_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AccountingService_UpdateLedgerEntry_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateLedgerEntryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccountingServiceServer).UpdateLedgerEntry(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AccountingService_UpdateLedgerEntry_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccountingServiceServer).UpdateLedgerEntry(ctx, req.(*UpdateLedgerEntryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _AccountingService_ListLedgerEntries_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListLedgerEntriesRequest)
 	if err := dec(in); err != nil {
@@ -175,6 +209,10 @@ var AccountingService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetLedgerEntry",
 			Handler:    _AccountingService_GetLedgerEntry_Handler,
+		},
+		{
+			MethodName: "UpdateLedgerEntry",
+			Handler:    _AccountingService_UpdateLedgerEntry_Handler,
 		},
 		{
 			MethodName: "ListLedgerEntries",
