@@ -1,0 +1,39 @@
+syntax = "proto3";
+package accounting;
+option go_package = "./protos";
+
+service AccountingService {
+  rpc CreateLedgerEntry (CreateLedgerEntryRequest) returns (CreateLedgerEntryResponse);
+  rpc GetLedgerEntry (GetLedgerEntryRequest) returns (GetLedgerEntryResponse);
+  rpc ListLedgerEntries (ListLedgerEntriesRequest) returns (ListLedgerEntriesResponse);
+}
+
+message CreateLedgerEntryRequest {
+  string description = 1;
+  double amount = 2;
+  string date = 3;
+}
+
+message CreateLedgerEntryResponse {
+  string id = 1;
+}
+
+message GetLedgerEntryRequest {
+  string id = 1;
+}
+
+message GetLedgerEntryResponse {
+  string id = 1;
+  string description = 2;
+  double amount = 3;
+  string date = 4;
+}
+
+message ListLedgerEntriesRequest {
+  string start_date = 1;
+  string end_date = 2;
+}
+
+message ListLedgerEntriesResponse {
+  repeated GetLedgerEntryResponse entries = 1;
+}
