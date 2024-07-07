@@ -9,9 +9,10 @@ service AccountingService {
 }
 
 message CreateLedgerEntryRequest {
-  string description = 1;
-  double amount = 2;
-  string date = 3;
+  string type = 1;
+  string description = 2;
+  double amount = 3;
+  string date = 4;
 }
 
 message CreateLedgerEntryResponse {
@@ -24,9 +25,10 @@ message GetLedgerEntryRequest {
 
 message GetLedgerEntryResponse {
   string id = 1;
-  string description = 2;
-  double amount = 3;
-  string date = 4;
+  string type = 2;
+  string description = 3;
+  double amount = 4;
+  string date = 5;
 }
 
 message ListLedgerEntriesRequest {

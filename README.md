@@ -1,12 +1,9 @@
-# Creating a gRPC microservice focused on company finance. Here are a few ideas for finance-related microservices tailored for companies:
+# Creating a gRPC microservice focused on company finance. 
+
+## Here are a few ideas for finance-related microservices tailored for companies.
 
 1. **Accounting Service**: Manage general ledger entries, accounts payable, and accounts receivable.
   - **Types of Ledger**
-  - **There are 3 types of Ledgers:-**
-    - Sales Ledger
-    - Purchase Ledger
-    - General Ledger
-
     - 1. **Sales Ledger** – Sales Ledger is a ledger in which the company maintains the transaction of selling the  products, services or cost of goods sold to customers. This ledger gives the idea of sales revenue and income statement.
 
     - 2. **Purchase Ledger** – Purchase Ledger is a ledger in which the company organizes the transaction of purchasing the services, products, or goods from other businesses. It gives the visibility of how much amount the company paid to other businesses.
@@ -31,7 +28,12 @@
 
 10. **Audit Service**: Provide tools for internal and external auditing, ensuring compliance with financial standards.
 
+> [!NOTE]
+> **Proto Generate Example:-**
+> `protoc --proto_path=. --go_out=. --go_opt=paths=source_relative protos/accounting-service.proto`
+> `protoc --proto_path=. --go-grpc_out=. protos/accounting-service.proto`
 
-# Proto Generate Example:-
-`protoc --proto_path=. --go_out=. --go_opt=paths=source_relative protos/accounting-service.proto`
-`protoc --proto_path=. --go-grpc_out=. protos/accounting-service.proto`
+> **grpcurl command:-**
+> **List all method of the service** `grpcurl --plaintext localhost:1993 list`
+> **Describe method** `grpcurl --plaintext localhost:1993 describe accounting.AccountingService.ListLedgerEntries`
+> **Test calling method with parameter** `grpcurl --plaintext -d '{"start_date":"02022024","end_date":"03032024"}' localhost:1993 accounting.AccountingService/ListLedgerEntries`

@@ -8,6 +8,7 @@ import (
 	protos "company-finance-service/protos"
 
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/reflection"
 )
 
 func main() {
@@ -21,6 +22,9 @@ func main() {
 	accountServer := accounting.NewAccountServer()
 
 	protos.RegisterAccountingServiceServer(s, accountServer)	
+
+	//! Development only
+	reflection.Register(s)
 
 	log.Printf("server listening at %v", lis.Addr())
 	if err := s.Serve(lis); err != nil {

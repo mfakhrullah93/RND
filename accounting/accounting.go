@@ -15,12 +15,12 @@ func NewAccountServer() *AccountServer{
 }
 
 func (acc *AccountServer) CreateLedgerEntry(ctx context.Context, cle*protos.CreateLedgerEntryRequest) (*protos.CreateLedgerEntryResponse, error) {
-	fmt.Println("CreateLedgerEntry: ", cle)
+	fmt.Println("[CreateLedgerEntry]", cle)
 	return &protos.CreateLedgerEntryResponse{Id: "1"}, nil
 }
 
 func (acc *AccountServer) ListLedgerEntries(ctx context.Context, lle*protos.ListLedgerEntriesRequest) (*protos.ListLedgerEntriesResponse, error) {
-	fmt.Println("GetLedgerList: ", "Start Date: ", lle.GetStartDate(), "End Date: ", lle.GetEndDate())
+	fmt.Println("[GetLedgerList]", "Start Date:", lle.GetStartDate(), "End Date:", lle.GetEndDate())
 	return &protos.ListLedgerEntriesResponse{Entries: listLedger}, nil
 }
 
