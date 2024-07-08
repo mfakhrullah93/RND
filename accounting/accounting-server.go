@@ -1,25 +1,25 @@
-package main
+package accounting
 
 import (
 	"log"
 	"net"
 
-	"company-finance-service/accounting"
-	protos "company-finance-service/protos"
+	"company-finance-service/protos"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 )
 
-func main() {
+func StartAccountingServer() {
 	
 	lis, err := net.Listen("tcp", ":1993")
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
+		return
 	}
 	
 	s := grpc.NewServer()
-	accountServer := accounting.NewAccountServer()
+	accountServer := NewAccountServer()
 
 	protos.RegisterAccountingServiceServer(s, accountServer)	
 
@@ -29,5 +29,6 @@ func main() {
 	log.Printf("server listening at %v", lis.Addr())
 	if err := s.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %v", err)
+		return
 	}
 }
