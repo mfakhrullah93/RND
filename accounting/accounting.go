@@ -1,7 +1,7 @@
 package accounting
 
 import (
-	protos "company-finance-service/protos"
+	"company-finance-service/protos"
 	"context"
 	"fmt"
 )

@@ -3,12 +3,7 @@
 **Here are a few ideas for finance-related microservices tailored for companies.**
 
 1. **Accounting Service**: Manage general ledger entries, accounts payable, and accounts receivable.
-  - **Types of Ledger**
-    - 1. **Sales Ledger** – Sales Ledger is a ledger in which the company maintains the transaction of selling the  products, services or cost of goods sold to customers. This ledger gives the idea of sales revenue and income statement.
-
-    - 2. **Purchase Ledger** – Purchase Ledger is a ledger in which the company organizes the transaction of purchasing the services, products, or goods from other businesses. It gives the visibility of how much amount the company paid to other businesses.
-
-    - 3. **General Ledger** – General Ledger is divided into two types – Nominal Ledger and Private Ledger. Nominal ledger gives information on expenses, income, depreciation, insurance, etc. And Private ledger gives private information like salaries, wages, capitals, etc. Private ledger is not accessible to everyone.
+  ![alt text](https://templatelab.com/wp-content/uploads/2024/02/Business-Ledger-Template-TemplateLab.com_.jpg "Title Text")
 
 2. **Payroll Service**: Handle employee salaries, bonuses, deductions, and tax calculations.
 

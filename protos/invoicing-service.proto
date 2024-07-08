@@ -35,6 +35,7 @@ message GetInvoiceResponse {
 message ReceivePaymentRequest {
   string invoice_id = 1;
   double amount = 2;
+  string payment_date = 3;
 }
 
 message ReceivePaymentResponse {}

@@ -10,10 +10,11 @@ service AccountingService {
 }
 
 message CreateLedgerEntryRequest {
-  string type_id = 1;
-  string description = 2;
-  double amount = 3;
-  string date = 4;
+  string invoice_id = 1;
+  string type_id = 2;
+  string description = 3;
+  double amount = 4;
+  string date = 5;
 }
 
 message CreateLedgerEntryResponse {
@@ -47,8 +48,9 @@ message ListLedgerEntriesResponse {
 
 message Ledger {
   string id = 1;
-  string type_id = 2;
-  string description = 3;
-  double amount = 4;
-  string date = 5;
+  string invoice_id = 2;
+  string type_id = 3;
+  string description = 4;
+  double amount = 5;
+  string date = 6;
 }
