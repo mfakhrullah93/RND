@@ -1,4 +1,4 @@
-package invoicing
+package main
 
 import (
 	"company-finance-service/protos"
@@ -9,9 +9,9 @@ import (
 	"google.golang.org/grpc/reflection"
 )
 
-func StartInvoicingServer() {
+func main() {
 
-	lis, err := net.Listen("tcp", ":1993")
+	lis, err := net.Listen("tcp", ":9902")
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 		return

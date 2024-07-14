@@ -1,4 +1,4 @@
-package accounting
+package main
 
 import (
 	"log"
@@ -10,9 +10,9 @@ import (
 	"google.golang.org/grpc/reflection"
 )
 
-func StartAccountingServer() {
+func main() {
 	
-	lis, err := net.Listen("tcp", ":1993")
+	lis, err := net.Listen("tcp", ":9901")
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 		return

@@ -1,4 +1,4 @@
-package accounting
+package main
 
 import (
 	"company-finance-service/protos"
@@ -22,6 +22,7 @@ func (acc *AccountServer) CreateLedgerEntry(ctx context.Context, cle*protos.Crea
 
 	newEntry := &protos.Ledger{
 		Id:          new_id,
+		InvoiceId:   cle.InvoiceId,
 		TypeId: 		 cle.TypeId,
 		Description: cle.Description,
 		Amount:      cle.Amount,

@@ -1,4 +1,4 @@
-package invoicing
+package main
 
 import (
 	"company-finance-service/protos"
