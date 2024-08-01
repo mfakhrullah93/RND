@@ -12,12 +12,13 @@ service InvoicingService {
 // Request and Response messages
 message CreateInvoiceRequest {
   string invoice_number = 1;
-  repeated string items = 4;
-  string invoice_date = 5;
-  string due_date = 6;
-  double total_amount = 7;
-  double tax_amount = 8;
-  double grand_total = 9;
+  repeated string items = 2;
+  string invoice_date = 3;
+  string due_date = 4;
+  double total_amount = 5;
+  double tax_amount = 6;
+  double grand_total = 7;
+  string status = 8;
 }
 
 message CreateInvoiceResponse {
@@ -44,11 +45,11 @@ message ReceivePaymentResponse {}
 message Invoice {
   string id = 1;
   string invoice_number = 2;
-  repeated string items = 5;
-  string invoice_date = 6;
-  string due_date = 7;
-  double total_amount = 8;
-  double tax_amount = 9;
-  double grand_total = 10;
-  string status = 13;
+  repeated string items = 3;
+  string invoice_date = 4;
+  string due_date = 5;
+  double total_amount = 6;
+  double tax_amount = 7;
+  double grand_total = 8;
+  string status = 9;
 }

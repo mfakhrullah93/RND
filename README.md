@@ -39,3 +39,7 @@
 > **Accounting**: `go run ./cmd/accounting`
 
 > **Invoicing**: `go run ./cmd/invoicing`
+
+
+`Note: Maybe this services dont need to be in gRPC.`
+`Todo: Make them as library instead.`
