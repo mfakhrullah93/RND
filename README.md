@@ -3,7 +3,8 @@
 **Here are a few ideas for finance-related microservices tailored for companies.**
 
 1. **Accounting Service**: Manage general ledger entries, accounts payable, and accounts receivable.
-    -Example https://templatelab.com/wp-content/uploads/2024/02/Business-Ledger-Template-TemplateLab.com_.jpg
+
+     Example https://templatelab.com/wp-content/uploads/2024/02/Business-Ledger-Template-TemplateLab.com_.jpg
 
 2. **Payroll Service**: Handle employee salaries, bonuses, deductions, and tax calculations.
 
